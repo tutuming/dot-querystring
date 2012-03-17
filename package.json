@@ -1,0 +1,16 @@
+{
+  "name": "dot-qs",
+  "version": "0.1.0",
+  "description": "Dot separated format version of node-querystring",
+  "keywords": [],
+  "author": "tutumin <tutuming@gmail.com>",
+  "repository": "git://github.com/tutuming/dot-querystring",
+  "dependencies": {
+  },
+  "devDependencies": {
+    "should": "*",
+    "mocha": "*"
+  },
+  "main": "index",
+  "engines": { "node": "*" }
+}
