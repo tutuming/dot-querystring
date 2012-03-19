@@ -59,8 +59,21 @@ describe('dotQs.flatten', function(){
       'b.d.1'  : 'b'
     });
   });
-});
 
+  it('should detect circular references', function(){
+    (function(){
+      var foo = {a : 1 };
+      foo.foo = foo;
+      dotQs.flatten(foo);
+    }).should.throw();
+
+    (function(){
+      var foo = {a : 1, b : [1,2,3]};
+      foo.b.push(foo);
+      dotQs.flatten(foo);
+    }).should.throw();
+  });
+});
 
 describe('dotQs.stringify', function(){
   it('should stringify basic objects', function(){
