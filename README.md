@@ -2,6 +2,12 @@
 
 dot notation version of [node-querystring](https://github.com/visionmedia/node-querystring).
 
+## Install 
+
+```
+npm install dot-qs
+```
+
 ## Examples
 
 ### stringify / parse
@@ -27,6 +33,27 @@ dotQs.flatten({name : 'john', emails : ['john@example.com', 'john2@example.com']
 // ->  { name: 'john',
 //     'emails.0': 'john@example.com',
 //     'emails.1': 'john2@example.com' }
+```
+
+## Browser support
+
+Copy lib/dot-querystring.js to your project.
+
+```
+<script type="text/javascript" src="dot-querystring.js"></script>
+<!-- optional -->
+<script type="text/javascript" src="jQuery.js"></script>
+
+<script type="text/javascript">
+  // use with jQuery.ajax
+  var obj = {name : 'john', emails : ['john@example.com', 'john2@example.com']};
+
+  // this will access http://example.com/foo?name=john&emails.0=john%40example.com&emails.1=john2%40example.com
+  $.ajax({
+    url : 'http://example.com/foo',
+    data : dotQs.flatten(obj)
+  });
+</script>
 ```
 
 ## License
