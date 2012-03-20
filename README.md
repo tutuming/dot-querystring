@@ -4,7 +4,7 @@ dot notation version of [node-querystring](https://github.com/visionmedia/node-q
 
 ## Examples
 
-### strinfigy / parse
+### stringify / parse
 
 ```js
 dotQs.stringify({a :{ b : 2}})
