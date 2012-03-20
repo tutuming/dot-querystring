@@ -1,7 +1,5 @@
-try{
-  var dotQs = require('../lib/dot-querystring');
-} catch (x) {
-  //ignore
+if(typeof dotQs === 'undefined'){
+  dotQs = require('../lib/dot-querystring');
 }
 
 describe('dotQs.parse', function(){
@@ -28,6 +26,10 @@ describe('dotQs.parse', function(){
 
   it('should skip empty array indexes', function(){
     dotQs.parse('3=3').should.eql([,,,'3']);
+  });
+
+  it('should decode keys', function(){
+    dotQs.parse('%E3%81%82=3').should.eql({'あ' : '3'});
   });
 
   it('should parse nested', function(){
@@ -91,8 +93,9 @@ describe('dotQs.stringify', function(){
       a : 12345,
       b : {
         c : 'hoge',
-        d : ['a', 'b']
+        d : ['a', 'b'],
+        'あいうえお' : 3
       }
-    }).should.eql('a=12345&b.c=hoge&b.d.0=a&b.d.1=b');
+    }).should.eql('a=12345&b.c=hoge&b.d.0=a&b.d.1=b&b.%E3%81%82%E3%81%84%E3%81%86%E3%81%88%E3%81%8A=3');
   });
 });
