@@ -1,3 +1,4 @@
+[![build status](https://secure.travis-ci.org/tutuming/dot-querystring.png)](http://travis-ci.org/tutuming/dot-querystring)
 # dot-querystring
 
 dot notation version of [node-querystring](https://github.com/visionmedia/node-querystring).
