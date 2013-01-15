@@ -14,7 +14,7 @@ describe('dotQs.parse', function(){
   });
 
   it('shold care blank value', function(){
-    dotQs.parse('aaa=').should.eql({'aaa' : null});
+    dotQs.parse('aaa=').should.eql({'aaa' : ''});
   });
 
   it('shold parse object', function(){
