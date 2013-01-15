@@ -8,11 +8,17 @@ dot notation version of [node-querystring](https://github.com/visionmedia/node-q
 npm install dot-qs
 ```
 
-## Examples
+## Examples 
 
 ### stringify / parse
 
 ```js
+
+// set array style to using dot (default).
+dotQs.options = {
+  arrayStyle : 'DOT'
+};
+
 dotQs.stringify({a :{ b : 2}})
 // -> 'a.b=2'
 
@@ -24,15 +30,49 @@ dotQs.parse('a.b.c=1&a.b.d=2')
 
 dotQs.parse('a.0=hoge&a.1=fuga')
 // -> { a: [ 'hoge', 'fuga' ] }
+
+// set array style to using brancket
+dotQs.options = {
+  arrayStyle : 'BRANCKET'
+};
+
+dotQs.stringify({a :{ b : 2}})
+// -> 'a.b=2'
+
+dotQs.stringify({a :[1,2,3,4,5]})
+// -> '"a%5B0%5D=1&a%5B1%5D=2&a%5B2%5D=3&a%5B3%5D=4&a%5B4%5D=5"'
+
+dotQs.parse('a.b.c=1&a.b.d=2')
+// -> { a: { b: { c: '1', d: '2' } } }
+
+dotQs.parse('a[0]=hoge&a[1]=fuga')
+// -> { a: [ 'hoge', 'fuga' ] }
+
 ```
 
 ### flatten
 
 ```js
+// set array style to using dot (default).
+dotQs.options = {
+  arrayStyle : 'DOT'
+};
+
 dotQs.flatten({name : 'john', emails : ['john@example.com', 'john2@example.com']})
 // ->  { name: 'john',
 //     'emails.0': 'john@example.com',
 //     'emails.1': 'john2@example.com' }
+
+// set array style to using brancket
+dotQs.options = {
+  arrayStyle : 'BRANCKET'
+};
+
+dotQs.flatten({name : 'john', emails : ['john@example.com', 'john2@example.com']})
+// ->  { name: 'john',
+//     'emails[0]': 'john@example.com',
+//     'emails[1]': 'john2@example.com' }
+
 ```
 
 ## Browser support

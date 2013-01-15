@@ -1,6 +1,6 @@
 {
   "name": "dot-qs",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Dot separated format version of node-querystring",
   "keywords": [],
   "author": "tutuming <tutuming@gmail.com>",
